@@ -50,6 +50,13 @@ public class ContactController {
     }
 
     @GetMapping("/edit/{id}")
+    public String editContactForm(@PathVariable("id") long id, Model model) {
+        Contact contact = contactService.getSpecificContact(id);
+        model.addAttribute("contact", contact);
+        return "editContactForm";
+    }
+
+    @PostMapping("/edit/{id}")
     public RedirectView editContact(@PathVariable("id") long id, CreateContact editContact) {
         contactService.editContact(id, editContact);
         return new RedirectView("/contacts/details/{id}");
