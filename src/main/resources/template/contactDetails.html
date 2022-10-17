@@ -62,13 +62,16 @@
                 </div>
 
                 <!--remove-->
-                <div>
+
                   <!--<form th:action="@{/contacts/delete/{id}(id=${contact.id})}" method="get">-->
                     <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                       Supprimer
                     </button>
                   <!--</form>-->
-                </div>
+
+                <form th:action="@{/contacts/delete/{id}(id=${contact.id})}" method="post">
+                  <!--<input type="hidden" th:field="*{contact.id}" id="id">-->
+
                 <!-- Button trigger modal -->
                 <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   Launch demo modal
@@ -89,16 +92,16 @@
 
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
 
-                        <form th:action="@{/contacts/delete/{id}(id=${contact.id})}" method="post">
-                          <button type="button" class="btn btn-danger">Supprimer</button>
-                        </form>
+                        <!--<form th:action="@{/contacts/delete/{id}(id=${contact.id})}" method="post">-->
+                          <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <!--</form>-->
 
                       </div>
                     </div>
                   </div>
                 </div>
 
-
+                </form>
 
               </li>
 
