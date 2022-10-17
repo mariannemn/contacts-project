@@ -19,6 +19,9 @@ public class UserService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         User newUser = new User();
+        newUser.setName(createUser.getName());
+        newUser.setFirstname(createUser.getFirstname());
+        // photo ?
         newUser.setEmail(createUser.getEmail());
         newUser.setPassword(passwordEncoder.encode(createUser.getPassword()));
 
