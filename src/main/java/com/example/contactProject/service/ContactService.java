@@ -1,12 +1,15 @@
 package com.example.contactProject.service;
 
 import com.example.contactProject.controller.dto.CreateContact;
+import com.example.contactProject.exceptions.ContactNotFoundException;
 import com.example.contactProject.repository.ContactRepository;
 import com.example.contactProject.repository.entity.Contact;
 import com.example.contactProject.repository.entity.User;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContactService {
@@ -19,6 +22,17 @@ public class ContactService {
 
     public List<Contact> getAllContacts() {
         return (List<Contact>) this.contactRepository.findAll();
+    }
+
+    public Contact getSpecificContact(long id) {
+        Optional<Contact> contactOptional = this.contactRepository.findById(id);
+
+        if (contactOptional.isPresent()) {
+            Contact contact = contactOptional.get();
+            return contact;
+        } else {
+            throw new ContactNotFoundException(id);
+        }
     }
 
     public void createContact(CreateContact createContact) {

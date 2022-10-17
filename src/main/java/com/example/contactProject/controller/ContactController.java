@@ -6,6 +6,7 @@ import com.example.contactProject.service.ContactService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -27,6 +28,13 @@ public class ContactController {
         List<Contact> contactList = contactService.getAllContacts();
         model.addAttribute("contacts", contactList);
         return "contactsListView";
+    }
+
+    @GetMapping("/details/{id}")
+    public String displaySpecificContact(@PathVariable("id") long id, Model model) {
+        Contact contact = contactService.getSpecificContact(id);
+        model.addAttribute("contact", contact);
+        return "contactDetails";
     }
 
     @GetMapping("/add")
