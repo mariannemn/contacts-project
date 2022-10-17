@@ -38,7 +38,7 @@ public class Contact {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthdate;
     @Basic
-    @Column(name = "notes", nullable = false, length = 2000)
+    @Column(name = "notes", nullable = true, length = 2000)
     private String notes;
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id", nullable = false)
