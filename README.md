@@ -3,6 +3,8 @@
 
 Author: Marianne Mongin  
 
+Note: A SQL file (contacts.sql) containing some data is available to test the project more easily.
+
 
 ## Features developed:  
 
@@ -14,6 +16,7 @@ Author: Marianne Mongin
   
   ## Features to be developed later (not done yet):  
   
-    - enable log out for a user  
-    - enable edition of a user's profile
-    - enable family relationships' information
+    - Enable log out for a user  
+    - Enable edition of a user's profile
+    - Enable family relationships' information  
+    
