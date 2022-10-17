@@ -8,7 +8,7 @@ Note: A SQL file (contacts.sql) containing some data is available at the root of
 
 ## Features developed:  
 
-  - CRUD Contact (display all contacts, add a new contact, edit and remove a contact)  
+  - CRUD Contact (display all contacts, display a contact's details, add a new contact, edit and remove a contact)  
   - Feature to search and display a contact by keywords (firstname or name)  
   
   - CRUD User (sign up, sign in)  
@@ -16,7 +16,7 @@ Note: A SQL file (contacts.sql) containing some data is available at the root of
   
   ## Features to be developed later (not done yet):  
   
-    - Enable log out for a user  
-    - Enable edition of a user's profile
-    - Enable family relationships' information  
+  - Enable log out for a user  
+  - Enable edition of a user's profile
+  - Enable family relationships' information  
     
