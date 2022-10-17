@@ -5,10 +5,7 @@ import com.example.contactProject.repository.entity.Contact;
 import com.example.contactProject.service.ContactService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -24,9 +21,14 @@ public class ContactController {
     }
 
     @GetMapping("/all")
-    public String displayAllContacts(Model model) {
-        List<Contact> contactList = contactService.getAllContacts();
-        model.addAttribute("contacts", contactList);
+    public String displayAllContacts(Model model, @RequestParam(value = "search", required = false) String searchValue) {
+        if (searchValue != null) {
+            List<Contact> contactList = contactService.getContactByKeywords(searchValue);
+            model.addAttribute("contacts", contactList);
+        } else {
+            List<Contact> contactList = contactService.getAllContacts();
+            model.addAttribute("contacts", contactList);
+        }
         return "contactsListView";
     }
 

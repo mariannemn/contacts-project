@@ -34,6 +34,10 @@ public class ContactService {
         }
     }
 
+    public List<Contact> getContactByKeywords(String name) { // recherche par nom
+        return this.contactRepository.findContactByNameContaining(name);
+    }
+
     public void createContact(CreateContact createContact) {
 
         Contact contact = new Contact();
@@ -80,4 +84,5 @@ public class ContactService {
     public void deleteContact(long id) {
         contactRepository.deleteById(id);
     }
+
 }
