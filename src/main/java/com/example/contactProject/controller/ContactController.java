@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/contacts")
 public class ContactController {
@@ -20,14 +22,21 @@ public class ContactController {
         this.contactService = contactService;
     }
 
+    @GetMapping("/all")
+    public String displayAllContacts(Model model) {
+        List<Contact> contactList = contactService.getAllContacts();
+        model.addAttribute("contacts", contactList);
+        return "contactsListView";
+    }
+
     @GetMapping("/add")
-    public String createEntrepriseForm(Model model) {
+    public String createContactForm(Model model) {
         model.addAttribute("contact", new Contact());
         return "createContactForm";
     }
 
     @PostMapping("/add")
-    public RedirectView createBook(CreateContact createContact) {
+    public RedirectView createContact(CreateContact createContact) {
         contactService.createContact(createContact);
         return new RedirectView("/contacts/all");
     }
