@@ -1,4 +1,4 @@
-package com.example.contactProject.controller.entity;
+package com.example.contactProject.repository.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -129,11 +129,11 @@ public class Contact {
         return Objects.hash(id, name, firstname, company, position, email, phone, birthdate, notes);
     }
 
-    public User getuser() {
+    public User getUser() {
         return user;
     }
 
-    public void setuser(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
