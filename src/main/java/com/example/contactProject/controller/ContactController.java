@@ -29,6 +29,13 @@ public class ContactController {
         return "contactsListView";
     }
 
+    @GetMapping("/details")
+    public String displaySpecificContact(long id, Model model) {
+        Contact contact = contactService.getSpecificContact(id);
+        model.addAttribute("contact", contact);
+        return "contactDetails";
+    }
+
     @GetMapping("/add")
     public String createContactForm(Model model) {
         model.addAttribute("contact", new Contact());
