@@ -51,6 +51,16 @@
                 <div th:text="'Notes : ' + ${contact.notes}"></div>
               </li>
 
+              <li class="list-group-item">
+
+                <!--edit-->
+                <div>
+                  <form th:action="@{/contacts/edit/{id}(id=${contact.id})}" method="get">
+                    <button class="btn btn-secondary" type="submit">Modifier</button>
+                  </form>
+                </div>
+              </li>
+
             </ul>
 
 
