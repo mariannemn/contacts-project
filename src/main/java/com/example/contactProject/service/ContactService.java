@@ -6,6 +6,8 @@ import com.example.contactProject.repository.entity.Contact;
 import com.example.contactProject.repository.entity.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ContactService {
 
@@ -13,6 +15,10 @@ public class ContactService {
 
     public ContactService(ContactRepository contactRepository) {
         this.contactRepository = contactRepository;
+    }
+
+    public List<Contact> getAllContacts() {
+        return (List<Contact>) this.contactRepository.findAll();
     }
 
     public void createContact(CreateContact createContact) {
