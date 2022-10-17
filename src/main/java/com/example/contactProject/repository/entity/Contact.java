@@ -1,7 +1,9 @@
 package com.example.contactProject.repository.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -32,7 +34,8 @@ public class Contact {
     private String phone;
     @Basic
     @Column(name = "birthdate", nullable = false)
-    private Date birthdate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthdate;
     @Basic
     @Column(name = "notes", nullable = false, length = 2000)
     private String notes;
@@ -100,11 +103,11 @@ public class Contact {
         this.phone = phone;
     }
 
-    public Date getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -129,11 +132,11 @@ public class Contact {
         return Objects.hash(id, name, firstname, company, position, email, phone, birthdate, notes);
     }
 
-    public User getuser() {
+    public User getUser() {
         return user;
     }
 
-    public void setuser(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
