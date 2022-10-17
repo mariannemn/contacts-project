@@ -6,7 +6,6 @@ import com.example.contactProject.repository.ContactRepository;
 import com.example.contactProject.repository.entity.Contact;
 import com.example.contactProject.repository.entity.User;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -76,5 +75,9 @@ public class ContactService {
         } else {
             throw new ContactNotFoundException(id);
         }
+    }
+
+    public void deleteContact(long id) {
+        contactRepository.deleteById(id);
     }
 }

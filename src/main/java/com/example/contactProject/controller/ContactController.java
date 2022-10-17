@@ -61,4 +61,18 @@ public class ContactController {
         contactService.editContact(id, editContact);
         return new RedirectView("/contacts/details/{id}");
     }
+
+    /*@GetMapping("/delete/{id}")
+    public String deleteContactModal(@PathVariable("id") long id, Model model) {
+        Contact contact = contactService.getSpecificContact(id);
+        model.addAttribute("contact", contact);
+        return "deleteContactModal";
+    }*/
+
+    @PostMapping("/delete/{id}")
+    public RedirectView deleteContact(@PathVariable("id") long id) {
+        contactService.deleteContact(id);
+        return new RedirectView("/contacts/all");
+    }
+
 }
