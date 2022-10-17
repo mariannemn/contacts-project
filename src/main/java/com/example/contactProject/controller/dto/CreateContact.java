@@ -1,12 +1,9 @@
 package com.example.contactProject.controller.dto;
 
 import com.example.contactProject.repository.entity.User;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class CreateContact {
 
@@ -22,7 +19,8 @@ public class CreateContact {
 
     private String phone;
 
-    private Date birthdate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthdate;
 
     private String notes;
 
@@ -79,11 +77,11 @@ public class CreateContact {
         this.phone = phone;
     }
 
-    public Date getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
