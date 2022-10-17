@@ -55,4 +55,26 @@ public class ContactService {
 
         contactRepository.save(contact);
     }
+
+    public void editContact(long id, CreateContact editContact) {
+        Optional<Contact> contactOptional = this.contactRepository.findById(id);
+
+        if (contactOptional.isPresent()) {
+            Contact contact = contactOptional.get();
+
+            contact.setName(editContact.getName());
+            contact.setFirstname(editContact.getFirstname());
+            contact.setCompany(editContact.getCompany());
+            contact.setPosition(editContact.getPosition());
+            contact.setEmail(editContact.getEmail());
+            contact.setPhone(editContact.getPhone());
+            contact.setBirthdate(editContact.getBirthdate());
+            contact.setNotes(editContact.getNotes());
+
+            contactRepository.save(contact);
+
+        } else {
+            throw new ContactNotFoundException(id);
+        }
+    }
 }

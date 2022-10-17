@@ -48,4 +48,10 @@ public class ContactController {
         contactService.createContact(createContact);
         return new RedirectView("/contacts/all");
     }
+
+    @GetMapping("/edit/{id}")
+    public RedirectView editContact(@PathVariable("id") long id, CreateContact editContact) {
+        contactService.editContact(id, editContact);
+        return new RedirectView("/contacts/details/{id}");
+    }
 }
