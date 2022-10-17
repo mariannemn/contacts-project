@@ -23,7 +23,7 @@ public class ContactController {
     @GetMapping("/all")
     public String displayAllContacts(Model model, @RequestParam(value = "search", required = false) String searchValue) {
         if (searchValue != null) {
-            List<Contact> contactList = contactService.getContactByKeywords(searchValue);
+            List<Contact> contactList = contactService.getContactByKeywords(searchValue, searchValue);
             model.addAttribute("contacts", contactList);
         } else {
             List<Contact> contactList = contactService.getAllContacts();

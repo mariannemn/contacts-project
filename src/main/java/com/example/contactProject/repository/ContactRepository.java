@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ContactRepository extends CrudRepository<Contact, Long> {
 
-    List<Contact> findContactByNameContaining(String name);
+    List<Contact> findContactByNameEqualsOrFirstnameEquals(String name, String firstname);
 }

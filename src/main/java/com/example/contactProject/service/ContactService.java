@@ -34,8 +34,8 @@ public class ContactService {
         }
     }
 
-    public List<Contact> getContactByKeywords(String name) { // recherche par nom
-        return this.contactRepository.findContactByNameContaining(name);
+    public List<Contact> getContactByKeywords(String name, String firstname) { // search by name or firstname
+        return this.contactRepository.findContactByNameEqualsOrFirstnameEquals(name, firstname);
     }
 
     public void createContact(CreateContact createContact) {
