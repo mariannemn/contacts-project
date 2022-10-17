@@ -35,4 +35,10 @@ public class UserController {
             return "redirect:/signin";
         }
     }
+
+    @GetMapping("/signin")
+    public String displaySignInForm(Model model, CreateUser user) {
+        model.addAttribute("user", user);
+        return "signInForm";
+    }
 }

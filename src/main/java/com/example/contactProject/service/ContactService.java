@@ -5,6 +5,9 @@ import com.example.contactProject.exceptions.ContactNotFoundException;
 import com.example.contactProject.repository.ContactRepository;
 import com.example.contactProject.repository.entity.Contact;
 import com.example.contactProject.repository.entity.User;
+import com.example.contactProject.security.CustomUserDetails;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +23,19 @@ public class ContactService {
     }
 
     public List<Contact> getAllContacts() {
-        return (List<Contact>) this.contactRepository.findAll();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        User connectedUser = customUser.getUser();
+
+        return this.contactRepository.findAllByUser(connectedUser);
     }
 
     public Contact getSpecificContact(long id) {
-        Optional<Contact> contactOptional = this.contactRepository.findById(id);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        User connectedUser = customUser.getUser();
+
+        Optional<Contact> contactOptional = Optional.ofNullable(this.contactRepository.findByIdAndUser(id, connectedUser));
 
         if (contactOptional.isPresent()) {
             Contact contact = contactOptional.get();
@@ -35,7 +46,11 @@ public class ContactService {
     }
 
     public List<Contact> getContactByKeywords(String name, String firstname) { // search by name or firstname
-        return this.contactRepository.findContactByNameEqualsOrFirstnameEquals(name, firstname);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        User connectedUser = customUser.getUser();
+
+        return this.contactRepository.findContactByNameEqualsAndUserOrFirstnameEqualsAndUser(name, connectedUser, firstname, connectedUser);
     }
 
     public void createContact(CreateContact createContact) {
@@ -43,7 +58,11 @@ public class ContactService {
         Contact contact = new Contact();
 
         User user = new User();
-        user.setId(1);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        User connectedUser = customUser.getUser();
+        user.setId(connectedUser.getId());
 
         contact.setName(createContact.getName());
         contact.setFirstname(createContact.getFirstname());
