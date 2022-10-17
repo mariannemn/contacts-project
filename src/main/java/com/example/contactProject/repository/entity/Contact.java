@@ -1,4 +1,4 @@
-package com.example.contactProject.controller.entity;
+package com.example.contactProject.repository.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
