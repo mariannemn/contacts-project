@@ -3,7 +3,7 @@
 
 Author: Marianne Mongin  
 
-Note: A SQL file (contacts.sql) containing some data is available to test the project more easily.
+Note: A SQL file (contacts.sql) containing some data is available at the root of the project to test the project more easily.
 
 
 ## Features developed:  
