@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="fr">
+<head></head>
 <body>
+<div th:fragment="header">
+<header class="mb-3">
 
+    <nav class="navbar navbar-light bg-light p-3">
+        <div class="container-fluid flex-md-row d-flex justify-content-around flex-column">
+
+            <div>
+                <a class="navbar-brand" th:href="@{/contacts/all}">
+                    <img src="https://sigerly.fr/wp-content/uploads/2017/09/picto_mes_contacts1.jpg"
+                         width="50" height="50" class="d-inline-block align-top" alt="">
+                </a>
+            </div>
+
+
+            <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>-->
+
+            <div id="navbarNavDropdown">
+                <ul class="navbar-nav flex-row justify-content-between">
+                    <li class="nav-item active mx-2">
+                        <a class="nav-link" th:href="@{/contacts/all}">Accueil</a>
+                    </li>
+
+                    <!--add contact button-->
+                    <li class="d-flex mx-2">
+                        <a th:href="@{/contacts/add}" class="nav-link">Créer un contact</a>
+                    </li>
+
+                    <li class="d-flex mx-2">
+                        <form class="d-flex" role="search" method="get" th:action="@{/contacts/all}">
+                            <input class="form-control me-2" name="search" type="search" placeholder="Rechercher un contact" aria-label="Rechercher">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </li>
+
+                    <li class="d-flex mx-2">
+                        <!--<form class="d-flex nav-link" action="/logout" method="post">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                        <button type="submit">Logout</button>
+                    </form>-->
+
+                        <!--<sec:authorize access="!isAuthenticated()">
+                            <a class="btn btn-light" href="${pageContext.request.contextPath}">Sign in</a>
+                        </sec:authorize>
+
+                        <sec:authorize access="isAuthenticated()">
+                            <p class="text-white">Welcome <sec:authentication property="principal.username"/></p>
+                            <form:form action="/logout" method="post">
+                                <button type="submit">Logout</button>
+                            </form:form>
+                        </sec:authorize>-->
+
+                    </li>
+
+                </ul>
+
+
+
+
+            </div>
+        </div>
+    </nav>
+
+</header>
+</div>
 </body>
 </html>
